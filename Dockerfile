@@ -2,7 +2,7 @@
 FROM php:8.3-apache
 
 RUN apt-get update && apt-get install -y \
-    git unzip libicu-dev libzip-dev \
+    git unzip libicu-dev libzip-dev libonig-dev \
     libpng-dev libjpeg-dev libfreetype6-dev \
     && docker-php-ext-configure gd \
        --with-freetype --with-jpeg \
