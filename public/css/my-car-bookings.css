@@ -1,0 +1,365 @@
+.my-car-bookings-section {
+    padding: 65px 0 80px;
+    background: #fbfaf6;
+    min-height: 550px;
+}
+
+.my-car-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.my-car-heading span {
+    color: #c49a55;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.my-car-heading h1 {
+    color: #12332e;
+    font-size: 36px;
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+.my-car-heading p {
+    color: #888;
+}
+
+.my-car-booking-card {
+    display: flex;
+    gap: 25px;
+    background: #fff;
+    padding: 22px;
+    border-radius: 15px;
+    margin-bottom: 22px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, .06);
+}
+
+.my-car-booking-image {
+    width: 220px;
+    min-width: 220px;
+    height: 170px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+    font-size: 55px;
+}
+
+.my-car-booking-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.my-car-booking-content {
+    flex: 1;
+}
+
+.my-car-booking-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.my-car-booking-top h4 {
+    color: #12332e;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.my-car-booking-top > div > span {
+    color: #999;
+    font-size: 12px;
+}
+
+.car-booking-status {
+    height: fit-content;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #997404;
+}
+
+.status-confirmed {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-cancelled {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.status-completed {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.my-car-booking-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 22px 0;
+}
+
+.my-car-booking-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.my-car-booking-info span {
+    color: #999;
+    font-size: 12px;
+}
+
+.my-car-booking-info strong {
+    color: #12332e;
+    font-size: 13px;
+}
+
+.my-car-view-btn {
+    display: inline-block;
+    background: #12332e;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.my-car-view-btn:hover {
+    background: #c49a55;
+    color: #fff;
+}
+
+.my-car-empty {
+    text-align: center;
+    background: #fff;
+    padding: 65px 20px;
+    border-radius: 15px;
+}
+
+.my-car-empty i {
+    font-size: 60px;
+    color: #c49a55;
+    margin-bottom: 20px;
+}
+
+.my-car-empty h3 {
+    color: #12332e;
+    font-weight: 700;
+}
+
+.my-car-empty p {
+    color: #888;
+}
+
+.my-car-empty a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 22px;
+    background: #12332e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.my-car-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+    .my-car-booking-card {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .my-car-booking-image {
+        width: 100%;
+        height: 210px;
+    }
+
+    .my-car-booking-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .my-car-heading h1 {
+        font-size: 29px;
+    }
+}
+
+@media (max-width: 400px) {
+    .my-car-booking-top {
+        flex-direction: column;
+    }
+}
+.car-booking-details-section {
+    padding: 55px 0 80px;
+    background: #fbfaf6;
+    min-height: 550px;
+}
+
+.car-details-back {
+    display: inline-block;
+    color: #12332e;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.car-details-back:hover {
+    color: #c49a55;
+}
+
+.car-booking-detail-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .06);
+}
+
+.car-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.car-detail-header span:first-child {
+    color: #c49a55;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.car-detail-header h2 {
+    color: #12332e;
+    font-size: 25px;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.car-detail-image {
+    height: 280px;
+    background: #f1f1f1;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 75px;
+}
+
+.car-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-detail-name {
+    color: #12332e;
+    font-size: 23px;
+    font-weight: 800;
+    margin-top: 18px;
+}
+
+.car-detail-section-title {
+    color: #12332e;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.car-detail-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.car-detail-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.car-detail-info span {
+    color: #999;
+    font-size: 12px;
+}
+
+.car-detail-info strong {
+    color: #12332e;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.car-detail-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #12332e;
+    color: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    margin: 25px 0;
+}
+
+.car-detail-total strong {
+    font-size: 23px;
+    color: #f2c36b;
+}
+
+.car-cancel-btn {
+    border: 0;
+    background: #dc3545;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.car-cancel-btn:hover {
+    background: #bb2d3b;
+}
+
+@media (max-width: 576px) {
+    .car-booking-detail-card {
+        padding: 20px;
+    }
+
+    .car-detail-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .car-detail-info {
+        grid-template-columns: 1fr;
+    }
+
+    .car-detail-image {
+        height: 220px;
+    }
+
+    .car-detail-total {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

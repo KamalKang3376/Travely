@@ -1,0 +1,292 @@
+.admin-cars-page {
+    padding: 25px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.page-header h2 {
+    font-size: 27px;
+    font-weight: 700;
+    color: #12332e;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: #777;
+    margin: 0;
+}
+
+.btn-add-car {
+    background: #12332e;
+    color: #fff;
+    padding: 11px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-add-car:hover {
+    background: #1b5148;
+    color: #fff;
+}
+
+.cars-table-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cars-table-card table {
+    min-width: 850px;
+}
+
+.cars-table-card thead th {
+    color: #666;
+    font-size: 13px;
+    font-weight: 700;
+    background: #f7f8f6;
+    padding: 15px;
+    white-space: nowrap;
+}
+
+.cars-table-card tbody td {
+    padding: 14px 15px;
+    color: #444;
+    font-size: 14px;
+}
+
+.car-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.car-info img,
+.car-placeholder {
+    width: 65px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.car-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf2ef;
+    color: #12332e;
+    font-size: 22px;
+}
+
+.car-info strong,
+.car-info small {
+    display: block;
+}
+
+.car-info strong {
+    color: #222;
+    font-size: 14px;
+}
+
+.car-info small {
+    color: #888;
+    margin-top: 3px;
+}
+
+.status-active,
+.status-inactive {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-active {
+    color: #16834b;
+    background: #e7f7ed;
+}
+
+.status-inactive {
+    color: #bd4545;
+    background: #fdeaea;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-edit,
+.btn-delete {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background: #e8f1f8;
+    color: #2673a9;
+}
+
+.btn-delete {
+    background: #fdeaea;
+    color: #c03939;
+}
+
+.empty-table {
+    text-align: center;
+    padding: 55px 15px !important;
+}
+
+.empty-table i {
+    font-size: 35px;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+.empty-table h5 {
+    color: #333;
+    font-weight: 700;
+}
+
+.empty-table p {
+    color: #888;
+    margin: 0;
+}
+
+.pagination-wrapper {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .admin-cars-page {
+        padding: 15px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cars-table-card {
+        padding: 12px;
+    }
+}
+.car-form-card {
+    background: #fff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.car-form-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.car-form-card .form-control,
+.car-form-card .form-select {
+    min-height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+}
+
+.car-form-card textarea.form-control {
+    min-height: 110px;
+}
+
+.car-form-card .form-control:focus,
+.car-form-card .form-select:focus {
+    border-color: #12332e;
+    box-shadow: 0 0 0 3px rgba(18, 51, 46, 0.1);
+}
+
+.btn-save-car {
+    background: #12332e;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 24px;
+    font-weight: 600;
+}
+
+.btn-save-car:hover {
+    background: #1b5148;
+}
+
+@media (max-width: 576px) {
+    .car-form-card {
+        padding: 18px;
+    }
+}
+.current-car-image {
+    display: block;
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: 1px solid #ddd;
+}
+.booking-status {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fff4d6;
+    color: #9a6b00;
+}
+
+.status-confirmed {
+    background: #e5f5eb;
+    color: #16834b;
+}
+
+.status-cancelled {
+    background: #fdeaea;
+    color: #bd4545;
+}
+
+.status-completed {
+    background: #e8f1f8;
+    color: #2673a9;
+}
+
+.booking-total-box {
+    background: #f3f7f4;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.booking-total-box span {
+    color: #666;
+    font-size: 14px;
+}
+
+.booking-total-box h3 {
+    color: #12332e;
+    font-weight: 700;
+    margin: 8px 0 0;
+}

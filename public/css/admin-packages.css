@@ -1,0 +1,319 @@
+.admin-packages-page {
+    padding: 10px 0;
+}
+
+.admin-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.admin-page-header h2 {
+    color: #12332e;
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.admin-page-header p {
+    color: #888;
+    font-size: 14px;
+    margin: 0;
+}
+
+.admin-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #12332e;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.admin-add-btn:hover {
+    background: #c49a55;
+    color: #fff;
+}
+
+.admin-table-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 18px rgba(0,0,0,.04);
+}
+
+.admin-packages-table {
+    margin-bottom: 0;
+    min-width: 850px;
+}
+
+.admin-packages-table thead th {
+    background: #f7f9f8;
+    color: #777;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 16px 12px;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.admin-packages-table tbody td {
+    color: #555;
+    font-size: 13px;
+    padding: 15px 12px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.admin-package-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 190px;
+}
+
+.admin-package-info img,
+.admin-package-placeholder {
+    width: 58px;
+    height: 48px;
+    border-radius: 7px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.admin-package-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f4f2;
+    color: #999;
+    font-size: 18px;
+}
+
+.admin-package-info strong {
+    display: block;
+    color: #12332e;
+    font-size: 13px;
+}
+
+.admin-package-info small {
+    display: block;
+    color: #999;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.admin-packages-table del {
+    display: block;
+    color: #999;
+    font-size: 11px;
+}
+
+.admin-packages-table td strong {
+    color: #12332e;
+}
+
+.package-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.featured-badge {
+    background: #fff3d9;
+    color: #a87816;
+}
+
+.normal-badge {
+    background: #f0f1f1;
+    color: #777;
+}
+
+.active-badge {
+    background: #e4f5eb;
+    color: #16834b;
+}
+
+.inactive-badge {
+    background: #fdeaea;
+    color: #bd4545;
+}
+
+.admin-package-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-package-actions a,
+.admin-package-actions button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.edit-action {
+    background: #e9f2f8;
+    color: #2673a9;
+}
+
+.delete-action {
+    background: #fdeaea;
+    color: #bd4545;
+}
+
+.admin-package-actions form {
+    margin: 0;
+}
+
+.edit-action:hover {
+    background: #2673a9;
+    color: #fff;
+}
+
+.delete-action:hover {
+    background: #bd4545;
+    color: #fff;
+}
+
+.empty-package-icon {
+    color: #c49a55;
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.admin-package-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.admin-package-pagination .page-link {
+    color: #12332e;
+}
+
+.admin-package-pagination .active .page-link {
+    background: #12332e;
+    border-color: #12332e;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    .admin-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .admin-page-header h2 {
+        font-size: 22px;
+    }
+
+    .admin-table-card {
+        padding: 12px;
+    }
+}
+/* Add and Edit Package Forms */
+
+.admin-package-form-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 18px rgba(0,0,0,.04);
+}
+
+.admin-form-label {
+    display: block;
+    color: #12332e;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.admin-package-form-card .form-control,
+.admin-package-form-card .form-select {
+    border: 1px solid #e2e8e5;
+    border-radius: 7px;
+    padding: 11px 13px;
+    font-size: 13px;
+    color: #444;
+    box-shadow: none;
+}
+
+.admin-package-form-card .form-control:focus,
+.admin-package-form-card .form-select:focus {
+    border-color: #12332e;
+    box-shadow: 0 0 0 3px rgba(18,51,46,.08);
+}
+
+.admin-package-form-card textarea {
+    resize: vertical;
+}
+
+.admin-package-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8faf9;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.admin-package-checkbox input {
+    width: 17px;
+    height: 17px;
+    accent-color: #12332e;
+    cursor: pointer;
+}
+
+.admin-package-checkbox label {
+    color: #12332e;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-package-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: none;
+    background: #12332e;
+    color: #fff;
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.admin-package-submit:hover {
+    background: #c49a55;
+}
+
+@media (max-width: 767px) {
+    .admin-package-form-card {
+        padding: 18px;
+    }
+
+    .admin-package-submit {
+        width: 100%;
+        justify-content: center;
+    }
+}

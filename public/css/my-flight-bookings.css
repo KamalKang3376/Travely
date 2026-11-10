@@ -1,0 +1,93 @@
+
+.my-flight-bookings {
+    min-height: 65vh;
+    background: #f8f9fa;
+}
+
+.booking-heading h1 {
+    color: #12332e;
+}
+
+.booking-table-wrapper,
+.booking-detail-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.06);
+}
+
+.booking-table-wrapper table {
+    min-width: 950px;
+}
+
+.booking-table-wrapper thead th {
+    background: #12332e;
+    color: #fff;
+    white-space: nowrap;
+    padding: 15px;
+}
+
+.booking-table-wrapper tbody td {
+    padding: 15px;
+}
+
+.booking-status {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-confirmed {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-cancelled {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.status-completed {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.empty-bookings {
+    background: #fff;
+    border-radius: 14px;
+    padding: 50px 20px;
+}
+
+.empty-bookings i {
+    font-size: 55px;
+    color: #c49a55;
+}
+
+.booking-detail-card p {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.booking-detail-card small {
+    color: #777;
+}
+
+@media (max-width: 767px) {
+    .booking-table-wrapper,
+    .booking-detail-card {
+        padding: 15px;
+    }
+
+    .booking-heading h1 {
+        font-size: 26px;
+    }
+}

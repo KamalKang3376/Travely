@@ -1,0 +1,209 @@
+
+.flight-booking-section {
+    background: #f8f7f3;
+    min-height: 80vh;
+}
+
+.booking-back-link {
+    color: #12332e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.booking-back-link:hover {
+    color: #c49a55;
+}
+
+.booking-form-card,
+.flight-summary-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+}
+
+.booking-form-card .form-control,
+.booking-form-card .form-select {
+    min-height: 48px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.booking-form-card .form-control:focus,
+.booking-form-card .form-select:focus {
+    border-color: #c49a55;
+    box-shadow: 0 0 0 3px rgba(196, 154, 85, 0.12);
+}
+
+.booking-submit-btn {
+    background: #12332e;
+    color: #fff;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.booking-submit-btn:hover {
+    background: #c49a55;
+    color: #fff;
+}
+
+.summary-flight-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.summary-route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-route h5 {
+    font-weight: 700;
+    color: #12332e;
+}
+
+.summary-route i {
+    color: #c49a55;
+}
+
+.summary-info {
+    padding-top: 15px;
+}
+
+.summary-info p,
+.confirmation-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.summary-info span,
+.confirmation-row span {
+    color: #777;
+}
+
+.summary-info strong,
+.confirmation-row strong {
+    color: #12332e;
+    text-align: right;
+}
+
+.summary-total,
+.confirmation-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.summary-total h3,
+.confirmation-total h3 {
+    color: #12332e;
+    font-weight: 800;
+}
+
+.booking-confirmation-section {
+    background: #f8f7f3;
+    min-height: 85vh;
+    padding: 50px 0;
+}
+
+.confirmation-card {
+    max-width: 720px;
+    margin: auto;
+    background: #fff;
+    border-radius: 18px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.confirmation-icon {
+    width: 75px;
+    height: 75px;
+    background: #e5f5eb;
+    color: #198754;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 32px;
+    margin: 0 auto 20px;
+}
+
+.confirmation-card > h2 {
+    color: #12332e;
+    font-weight: 800;
+}
+
+.confirmation-reference {
+    background: #f5f1e8;
+    border: 1px dashed #c49a55;
+    padding: 18px;
+    border-radius: 12px;
+    margin: 25px 0;
+}
+
+.confirmation-reference span {
+    color: #777;
+    font-size: 14px;
+}
+
+.confirmation-reference h3 {
+    color: #12332e;
+    font-weight: 800;
+    margin: 8px 0 0;
+    letter-spacing: 2px;
+}
+
+.confirmation-details {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.confirmation-row {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+}
+
+.confirmation-total {
+    padding-top: 20px;
+}
+
+@media (max-width: 767px) {
+    .booking-form-card,
+    .flight-summary-card {
+        padding: 20px;
+    }
+
+    .confirmation-card {
+        padding: 25px 18px;
+    }
+
+    .confirmation-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .confirmation-row strong {
+        text-align: left;
+    }
+
+    .summary-total h3,
+    .confirmation-total h3 {
+        font-size: 20px;
+    }
+}

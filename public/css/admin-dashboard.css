@@ -1,0 +1,48 @@
+.admin-dashboard {
+    background: #f8f9fc;
+    min-height: 80vh;
+}
+
+.admin-dashboard h1 {
+    color: #12332e;
+}
+
+.dashboard-card {
+    height: 100%;
+    border: 0;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card i {
+    color: #c49a55;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h3 {
+    color: #12332e;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.dashboard-card p {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.dashboard-card a {
+    color: #12332e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dashboard-card a:hover {
+    color: #c49a55;
+}
