@@ -4,8 +4,7 @@ FROM php:8.4-apache
 RUN apt-get update && apt-get install -y \
     git unzip libicu-dev libzip-dev libonig-dev \
     libpng-dev libjpeg-dev libfreetype6-dev \
-    && docker-php-ext-configure gd \
-       --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
        pdo_mysql mbstring exif pcntl bcmath gd zip intl \
     && a2enmod rewrite headers \
@@ -37,11 +36,13 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader
 
-RUN mkdir -p storage/framework/cache \
+RUN mkdir -p storage/app/public \
+    storage/framework/cache \
     storage/framework/sessions \
     storage/framework/views \
     storage/logs \
     bootstrap/cache \
+    && php artisan storage:link \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
