@@ -31,6 +31,14 @@ use App\Http\Controllers\MyPackageBookingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/route-check', function () {
+    return response()->json([
+        'environment' => app()->environment(),
+        'destinations_route' => Route::has('destinations.index'),
+        'destination_controller' => class_exists(DestinationController::class),
+    ]);
+});
+
 // Guest Routes
 Route::middleware('guest')->group(function () {
 
