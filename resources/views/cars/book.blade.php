@@ -3,7 +3,7 @@
 @section('title', 'Book ' . $car->name . ' - Travely')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/car-booking.css') }}">
+<link rel="stylesheet" href="{{ asset('css/car-booking-form.css') }}">
 @endpush
 
 @section('content')
