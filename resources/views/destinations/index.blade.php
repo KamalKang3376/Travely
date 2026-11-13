@@ -28,7 +28,7 @@
                     <div class="destination-list-card">
 
                         @if($destination->image)
-                            <img src="{{ asset('storage/' . $destination->image) }}"
+                            <img src="{{ travely_image_url($destination->image) }}"
                                 alt="{{ $destination->name }}">
                         @else
                             <img src="https://placehold.co/600x400?text=Destination"

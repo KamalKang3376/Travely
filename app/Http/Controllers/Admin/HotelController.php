@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hotel;
+use App\Services\CloudinaryImageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 class HotelController extends Controller
 {
@@ -23,8 +22,10 @@ class HotelController extends Controller
         return view('admin.hotels.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(
+        Request $request,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -43,8 +44,10 @@ class HotelController extends Controller
         $validated['rating'] = $validated['rating'] ?? 0;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')
-                ->store('hotels', 'public');
+            $validated['image'] = $imageService->upload(
+                $request->file('image'),
+                'hotels'
+            );
         }
 
         Hotel::create($validated);
@@ -59,8 +62,11 @@ class HotelController extends Controller
         return view('admin.hotels.edit', compact('hotel'));
     }
 
-    public function update(Request $request, Hotel $hotel)
-    {
+    public function update(
+        Request $request,
+        Hotel $hotel,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -75,16 +81,22 @@ class HotelController extends Controller
             'status' => 'required|boolean',
         ]);
 
-        $validated['slug'] = $this->generateSlug($request->name, $hotel->id);
+        $validated['slug'] = $this->generateSlug(
+            $request->name,
+            $hotel->id
+        );
+
         $validated['rating'] = $validated['rating'] ?? 0;
 
         if ($request->hasFile('image')) {
-            if ($hotel->image) {
-                Storage::disk('public')->delete($hotel->image);
-            }
+            $newImage = $imageService->upload(
+                $request->file('image'),
+                'hotels'
+            );
 
-            $validated['image'] = $request->file('image')
-                ->store('hotels', 'public');
+            $imageService->delete($hotel->image);
+
+            $validated['image'] = $newImage;
         }
 
         $hotel->update($validated);
@@ -94,11 +106,11 @@ class HotelController extends Controller
             ->with('success', 'Hotel updated successfully.');
     }
 
-    public function destroy(Hotel $hotel)
-    {
-        if ($hotel->image) {
-            Storage::disk('public')->delete($hotel->image);
-        }
+    public function destroy(
+        Hotel $hotel,
+        CloudinaryImageService $imageService
+    ) {
+        $imageService->delete($hotel->image);
 
         $hotel->delete();
 
@@ -115,7 +127,10 @@ class HotelController extends Controller
 
         while (
             Hotel::where('slug', $slug)
-                ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+                ->when(
+                    $ignoreId,
+                    fn ($query) => $query->where('id', '!=', $ignoreId)
+                )
                 ->exists()
         ) {
             $slug = $originalSlug . '-' . $counter++;

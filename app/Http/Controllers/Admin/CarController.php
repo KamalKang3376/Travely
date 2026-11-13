@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use App\Services\CloudinaryImageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -23,8 +23,10 @@ class CarController extends Controller
         return view('admin.cars.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(
+        Request $request,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
@@ -41,7 +43,8 @@ class CarController extends Controller
             'status' => 'nullable|boolean',
         ]);
 
-        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
+        $validated['slug'] = $validated['slug']
+            ?: Str::slug($validated['name']);
 
         if (Car::where('slug', $validated['slug'])->exists()) {
             return back()->withInput()->withErrors([
@@ -50,11 +53,17 @@ class CarController extends Controller
         }
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('cars', 'public');
+            $validated['image'] = $imageService->upload(
+                $request->file('image'),
+                'cars'
+            );
         }
 
         $validated['features'] = !empty($validated['features'])
-            ? array_values(array_filter(array_map('trim', explode(',', $validated['features']))))
+            ? array_values(array_filter(array_map(
+                'trim',
+                explode(',', $validated['features'])
+            )))
             : [];
 
         $validated['status'] = $request->boolean('status');
@@ -70,8 +79,11 @@ class CarController extends Controller
         return view('admin.cars.edit', compact('car'));
     }
 
-    public function update(Request $request, Car $car)
-    {
+    public function update(
+        Request $request,
+        Car $car,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
@@ -93,18 +105,25 @@ class CarController extends Controller
             'status' => 'nullable|boolean',
         ]);
 
-        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['name']);
+        $validated['slug'] = $validated['slug']
+            ?: Str::slug($validated['name']);
 
         if ($request->hasFile('image')) {
-            if ($car->image) {
-                Storage::disk('public')->delete($car->image);
-            }
+            $newImage = $imageService->upload(
+                $request->file('image'),
+                'cars'
+            );
 
-            $validated['image'] = $request->file('image')->store('cars', 'public');
+            $imageService->delete($car->image);
+
+            $validated['image'] = $newImage;
         }
 
         $validated['features'] = !empty($validated['features'])
-            ? array_values(array_filter(array_map('trim', explode(',', $validated['features']))))
+            ? array_values(array_filter(array_map(
+                'trim',
+                explode(',', $validated['features'])
+            )))
             : [];
 
         $validated['status'] = $request->boolean('status');
@@ -115,11 +134,11 @@ class CarController extends Controller
             ->with('success', 'Car updated successfully.');
     }
 
-    public function destroy(Car $car)
-    {
-        if ($car->image) {
-            Storage::disk('public')->delete($car->image);
-        }
+    public function destroy(
+        Car $car,
+        CloudinaryImageService $imageService
+    ) {
+        $imageService->delete($car->image);
 
         $car->delete();
 

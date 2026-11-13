@@ -43,7 +43,7 @@
                         <tr>
                             <td>
                                 @if($hotel->image)
-                                    <img src="{{ asset('storage/'.$hotel->image) }}"
+                                    <img src="{{ travely_image_url($hotel->image) }}"
                                          width="65" height="50"
                                          style="object-fit: cover; border-radius: 6px;">
                                 @else

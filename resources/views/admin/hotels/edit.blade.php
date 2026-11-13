@@ -88,7 +88,7 @@
                         <label class="form-label">Current Image</label><br>
 
                         @if($hotel->image)
-                            <img src="{{ asset('storage/'.$hotel->image) }}"
+                            <img src="{{ travely_image_url($hotel->image) }}"
                                  width="150" height="100"
                                  style="object-fit: cover; border-radius: 8px;"
                                  class="mb-3">

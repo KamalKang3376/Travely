@@ -104,7 +104,7 @@
 
                         @if($destination->image)
                             <img
-                                src="{{ asset('storage/' . $destination->image) }}"
+                                src="{{ travely_image_url($destination->image) }}"
                                 class="carousel-image"
                                 alt="{{ $destination->name }}">
                         @else
@@ -323,7 +323,7 @@
             <div class="destination-card">
 
                 @if($destination->image)
-                    <img src="{{ asset('storage/' . $destination->image) }}"
+                    <img src="{{ travely_image_url($destination->image) }}"
                          alt="{{ $destination->name }}"
                          loading="lazy">
                 @else

@@ -142,7 +142,7 @@
 
                         @if($booking->destination->image)
                             <img
-                                src="{{ asset('storage/' . $booking->destination->image) }}"
+                                src="{{ travely_image_url($booking->destination->image) }}"
                                 alt="{{ $booking->destination->name }}"
                                 class="img-fluid rounded mb-3"
                                 style="width: 100%; height: 250px; object-fit: cover;"

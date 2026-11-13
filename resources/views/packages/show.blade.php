@@ -9,7 +9,7 @@
 @section('content')
 
 <section class="package-detail-hero"
-    style="background-image: linear-gradient(rgba(0,35,40,.65), rgba(0,35,40,.65)), url('{{ $package->image ? asset('storage/' . $package->image) : asset('images/default-package.jpg') }}');">
+    style="background-image: linear-gradient(rgba(0,35,40,.65), rgba(0,35,40,.65)), url('{{ $package->image ? travely_image_url($package->image) : asset('images/default-package.jpg') }}');">
 
     <div class="container">
         <div class="package-detail-hero-content">
@@ -163,7 +163,7 @@
 
                                 <div class="package-image">
                                     <img
-                                        src="{{ $related->image ? asset('storage/' . $related->image) : asset('images/default-package.jpg') }}"
+                                        src="{{ $related->image ? travely_image_url($related->image) : asset('images/default-package.jpg') }}"
                                         alt="{{ $related->name }}"
                                     >
                                 </div>

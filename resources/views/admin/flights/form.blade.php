@@ -87,7 +87,7 @@
         @error('image') <small class="text-danger">{{ $message }}</small> @enderror
 
         @if(isset($flight) && $flight->image)
-            <img src="{{ asset('storage/' . $flight->image) }}"
+            <img src="{{ travely_image_url($flight->image) }}"
                  width="130" class="mt-3 rounded" alt="Flight image">
         @endif
     </div>

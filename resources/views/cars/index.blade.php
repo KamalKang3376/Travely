@@ -35,7 +35,7 @@
 
                         <div class="car-image">
                             @if($car->image)
-                                <img src="{{ asset('storage/' . $car->image) }}"
+                                <img src="{{ travely_image_url($car->image) }}"
                                      alt="{{ $car->name }}">
                             @else
                                 <div class="car-no-image">

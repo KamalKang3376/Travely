@@ -97,7 +97,7 @@
                     <h4 class="fw-bold mb-3">Flight Summary</h4>
 
                     @if($flight->image)
-                        <img src="{{ asset('storage/' . $flight->image) }}"
+                        <img src="{{ travely_image_url($flight->image) }}"
                              class="summary-flight-image"
                              alt="{{ $flight->airline }}">
                     @endif

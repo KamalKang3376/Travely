@@ -116,7 +116,7 @@
             <div class="col-lg-5">
                 <div class="booking-summary">
                     @if($hotel->image)
-                        <img src="{{ asset('storage/' . $hotel->image) }}"
+                        <img src="{{ travely_image_url($hotel->image) }}"
                             alt="{{ $hotel->name }}" class="summary-image">
                     @endif
 

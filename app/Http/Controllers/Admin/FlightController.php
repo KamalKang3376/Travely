@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Flight;
+use App\Services\CloudinaryImageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class FlightController extends Controller
@@ -22,8 +22,10 @@ class FlightController extends Controller
         return view('admin.flights.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(
+        Request $request,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'airline' => 'required|string|max:255',
             'flight_number' => 'required|string|max:50|unique:flights,flight_number',
@@ -43,7 +45,10 @@ class FlightController extends Controller
         $validated['available_seats'] = $validated['total_seats'];
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('flights', 'public');
+            $validated['image'] = $imageService->upload(
+                $request->file('image'),
+                'flights'
+            );
         }
 
         Flight::create($validated);
@@ -62,8 +67,11 @@ class FlightController extends Controller
         return view('admin.flights.edit', compact('flight'));
     }
 
-    public function update(Request $request, Flight $flight)
-    {
+    public function update(
+        Request $request,
+        Flight $flight,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'airline' => 'required|string|max:255',
             'flight_number' => [
@@ -86,11 +94,14 @@ class FlightController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($flight->image) {
-                Storage::disk('public')->delete($flight->image);
-            }
+            $newImage = $imageService->upload(
+                $request->file('image'),
+                'flights'
+            );
 
-            $validated['image'] = $request->file('image')->store('flights', 'public');
+            $imageService->delete($flight->image);
+
+            $validated['image'] = $newImage;
         }
 
         $flight->update($validated);
@@ -99,15 +110,18 @@ class FlightController extends Controller
             ->with('success', 'Flight updated successfully!');
     }
 
-    public function destroy(Flight $flight)
-    {
+    public function destroy(
+        Flight $flight,
+        CloudinaryImageService $imageService
+    ) {
         if ($flight->bookings()->exists()) {
-            return back()->with('error', 'This flight cannot be deleted because bookings already exist.');
+            return back()->with(
+                'error',
+                'This flight cannot be deleted because bookings already exist.'
+            );
         }
 
-        if ($flight->image) {
-            Storage::disk('public')->delete($flight->image);
-        }
+        $imageService->delete($flight->image);
 
         $flight->delete();
 

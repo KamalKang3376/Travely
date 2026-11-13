@@ -35,7 +35,7 @@
                 <div class="col-lg-5">
                     <div class="car-detail-image">
                         @if($booking->car->image)
-                            <img src="{{ asset('storage/' . $booking->car->image) }}"
+                            <img src="{{ travely_image_url($booking->car->image) }}"
                                  alt="{{ $booking->car->name }}">
                         @else
                             <i class="fas fa-car"></i>

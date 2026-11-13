@@ -36,7 +36,7 @@
                         <div class="hotel-image">
 
                             @if($hotel->image)
-                                <img src="{{ asset('storage/'.$hotel->image) }}"
+                                <img src="{{ travely_image_url($hotel->image) }}"
                                      alt="{{ $hotel->name }}">
                             @else
                                 <img src="https://placehold.co/600x400?text=Hotel"

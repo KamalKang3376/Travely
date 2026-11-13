@@ -19,7 +19,7 @@
         <div class="flight-details-card mt-4">
 
             @if($flight->image)
-                <img src="{{ asset('storage/' . $flight->image) }}"
+                <img src="{{ travely_image_url($flight->image) }}"
                      class="flight-details-image" alt="{{ $flight->airline }}">
             @endif
 

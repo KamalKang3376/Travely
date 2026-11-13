@@ -20,7 +20,7 @@
 
             <div class="col-lg-7">
                 @if($hotel->image)
-                    <img src="{{ asset('storage/'.$hotel->image) }}"
+                    <img src="{{ travely_image_url($hotel->image) }}"
                          class="hotel-detail-image"
                          alt="{{ $hotel->name }}">
                 @else

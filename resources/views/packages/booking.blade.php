@@ -127,7 +127,7 @@
 
                     <div class="booking-summary-image">
                         @if($package->image)
-                            <img src="{{ asset('storage/' . $package->image) }}"
+                            <img src="{{ travely_image_url($package->image) }}"
                                  alt="{{ $package->name }}">
                         @else
                             <img src="{{ asset('images/default-package.jpg') }}"

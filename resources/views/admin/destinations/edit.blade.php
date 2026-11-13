@@ -73,7 +73,7 @@
 
                         @if($destination->image)
                             <div class="mb-2">
-                                <img src="{{ asset('storage/' . $destination->image) }}"
+                                <img src="{{ travely_image_url($destination->image) }}"
                                     width="150" height="100"
                                     style="object-fit: cover; border-radius: 8px;">
                             </div>

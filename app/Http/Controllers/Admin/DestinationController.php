@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Destination;
+use App\Services\CloudinaryImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Storage;
 
 class DestinationController extends Controller
 {
@@ -23,7 +22,7 @@ class DestinationController extends Controller
         return view('admin.destinations.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, CloudinaryImageService $imageService)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -38,8 +37,10 @@ class DestinationController extends Controller
         $validated['slug'] = $this->generateSlug($validated['name']);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')
-                ->store('destinations', 'public');
+            $validated['image'] = $imageService->upload(
+                $request->file('image'),
+                'destinations'
+            );
         }
 
         Destination::create($validated);
@@ -53,8 +54,11 @@ class DestinationController extends Controller
         return view('admin.destinations.edit', compact('destination'));
     }
 
-    public function update(Request $request, Destination $destination)
-    {
+    public function update(
+        Request $request,
+        Destination $destination,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'country' => 'required|string|max:255',
@@ -71,13 +75,14 @@ class DestinationController extends Controller
         );
 
         if ($request->hasFile('image')) {
+            $newImage = $imageService->upload(
+                $request->file('image'),
+                'destinations'
+            );
 
-            if ($destination->image) {
-                Storage::disk('public')->delete($destination->image);
-            }
+            $imageService->delete($destination->image);
 
-            $validated['image'] = $request->file('image')
-                ->store('destinations', 'public');
+            $validated['image'] = $newImage;
         }
 
         $destination->update($validated);
@@ -86,11 +91,11 @@ class DestinationController extends Controller
             ->with('success', 'Destination updated successfully.');
     }
 
-    public function destroy(Destination $destination)
-    {
-        if ($destination->image) {
-            Storage::disk('public')->delete($destination->image);
-        }
+    public function destroy(
+        Destination $destination,
+        CloudinaryImageService $imageService
+    ) {
+        $imageService->delete($destination->image);
 
         $destination->delete();
 
@@ -106,7 +111,10 @@ class DestinationController extends Controller
 
         while (
             Destination::where('slug', $slug)
-                ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+                ->when(
+                    $ignoreId,
+                    fn ($query) => $query->where('id', '!=', $ignoreId)
+                )
                 ->exists()
         ) {
             $slug = $originalSlug . '-' . $counter;

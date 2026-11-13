@@ -48,7 +48,7 @@
                 <div class="col-lg-5">
                     @if($booking->destination->image)
                         <img
-                            src="{{ asset('storage/' . $booking->destination->image) }}"
+                            src="{{ travely_image_url($booking->destination->image) }}"
                             alt="{{ $booking->destination->name }}"
                             class="booking-destination-image"
                         >

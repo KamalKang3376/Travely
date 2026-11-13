@@ -146,7 +146,7 @@
                 <div class="rental-summary-card">
 
                     @if($car->image)
-                        <img src="{{ asset('storage/' . $car->image) }}"
+                        <img src="{{ travely_image_url($car->image) }}"
                              alt="{{ $car->name }}">
                     @endif
 

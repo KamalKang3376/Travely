@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Package;
+use App\Services\CloudinaryImageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -23,8 +23,10 @@ class PackageController extends Controller
         return view('admin.packages.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(
+        Request $request,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:packages,slug',
@@ -52,16 +54,26 @@ class PackageController extends Controller
                 ->withInput();
         }
 
-        $validated['highlights'] = $this->convertToArray($validated['highlights'] ?? '');
-        $validated['inclusions'] = $this->convertToArray($validated['inclusions'] ?? '');
-        $validated['exclusions'] = $this->convertToArray($validated['exclusions'] ?? '');
+        $validated['highlights'] = $this->convertToArray(
+            $validated['highlights'] ?? ''
+        );
+
+        $validated['inclusions'] = $this->convertToArray(
+            $validated['inclusions'] ?? ''
+        );
+
+        $validated['exclusions'] = $this->convertToArray(
+            $validated['exclusions'] ?? ''
+        );
 
         $validated['featured'] = $request->boolean('featured');
         $validated['status'] = $request->boolean('status');
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')
-                ->store('packages', 'public');
+            $validated['image'] = $imageService->upload(
+                $request->file('image'),
+                'packages'
+            );
         }
 
         Package::create($validated);
@@ -76,8 +88,11 @@ class PackageController extends Controller
         return view('admin.packages.edit', compact('package'));
     }
 
-    public function update(Request $request, Package $package)
-    {
+    public function update(
+        Request $request,
+        Package $package,
+        CloudinaryImageService $imageService
+    ) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'slug' => [
@@ -104,20 +119,30 @@ class PackageController extends Controller
             $validated['slug'] ?: $validated['name']
         );
 
-        $validated['highlights'] = $this->convertToArray($validated['highlights'] ?? '');
-        $validated['inclusions'] = $this->convertToArray($validated['inclusions'] ?? '');
-        $validated['exclusions'] = $this->convertToArray($validated['exclusions'] ?? '');
+        $validated['highlights'] = $this->convertToArray(
+            $validated['highlights'] ?? ''
+        );
+
+        $validated['inclusions'] = $this->convertToArray(
+            $validated['inclusions'] ?? ''
+        );
+
+        $validated['exclusions'] = $this->convertToArray(
+            $validated['exclusions'] ?? ''
+        );
 
         $validated['featured'] = $request->boolean('featured');
         $validated['status'] = $request->boolean('status');
 
         if ($request->hasFile('image')) {
-            if ($package->image) {
-                Storage::disk('public')->delete($package->image);
-            }
+            $newImage = $imageService->upload(
+                $request->file('image'),
+                'packages'
+            );
 
-            $validated['image'] = $request->file('image')
-                ->store('packages', 'public');
+            $imageService->delete($package->image);
+
+            $validated['image'] = $newImage;
         }
 
         $package->update($validated);
@@ -127,11 +152,11 @@ class PackageController extends Controller
             ->with('success', 'Package updated successfully.');
     }
 
-    public function destroy(Package $package)
-    {
-        if ($package->image) {
-            Storage::disk('public')->delete($package->image);
-        }
+    public function destroy(
+        Package $package,
+        CloudinaryImageService $imageService
+    ) {
+        $imageService->delete($package->image);
 
         $package->delete();
 

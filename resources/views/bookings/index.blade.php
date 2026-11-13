@@ -57,7 +57,7 @@
                                     <div class="booking-hotel">
                                         @if($booking->hotel && $booking->hotel->image)
                                             <img
-                                                src="{{ asset('storage/' . $booking->hotel->image) }}"
+                                                src="{{ travely_image_url($booking->hotel->image) }}"
                                                 alt="{{ $booking->hotel->name }}"
                                             >
                                         @endif

@@ -50,7 +50,7 @@
                             <td>
                                 <div class="car-info">
                                     @if($car->image)
-                                        <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->name }}">
+                                        <img src="{{ travely_image_url($car->image) }}" alt="{{ $car->name }}">
                                     @else
                                         <div class="car-placeholder">
                                             <i class="fas fa-car"></i>

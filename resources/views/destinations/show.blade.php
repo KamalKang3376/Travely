@@ -12,7 +12,7 @@
 
     @if($destination->image)
         <div class="destination-detail-image"
-            style="background-image: url('{{ asset('storage/' . $destination->image) }}')">
+            style="background-image: url('{{ travely_image_url($destination->image) }}')">
         </div>
     @endif
 

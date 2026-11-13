@@ -75,7 +75,7 @@
                     <div class="flight-card">
 
                         @if($flight->image)
-                            <img src="{{ asset('storage/' . $flight->image) }}"
+                            <img src="{{ travely_image_url($flight->image) }}"
                                  class="flight-card-image" alt="{{ $flight->airline }}">
                         @else
                             <div class="flight-card-placeholder">

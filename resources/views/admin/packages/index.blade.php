@@ -58,7 +58,7 @@
                                 <div class="admin-package-info">
 
                                     @if($package->image)
-                                        <img src="{{ asset('storage/' . $package->image) }}"
+                                        <img src="{{ travely_image_url($package->image) }}"
                                              alt="{{ $package->name }}">
                                     @else
                                         <div class="admin-package-placeholder">

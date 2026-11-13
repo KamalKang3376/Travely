@@ -39,7 +39,7 @@
 
                         <div class="package-image">
                             <img
-                                src="{{ $package->image ? asset('storage/' . $package->image) : asset('images/default-package.jpg') }}"
+                                src="{{ $package->image ? travely_image_url($package->image) : asset('images/default-package.jpg') }}"
                                 alt="{{ $package->name }}"
                             >
 

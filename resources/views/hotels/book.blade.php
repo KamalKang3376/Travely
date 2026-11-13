@@ -138,7 +138,7 @@
                 <div class="booking-hotel-summary">
 
                     @if($hotel->image)
-                        <img src="{{ asset('storage/' . $hotel->image) }}"
+                        <img src="{{ travely_image_url($hotel->image) }}"
                              alt="{{ $hotel->name }}">
                     @endif
 

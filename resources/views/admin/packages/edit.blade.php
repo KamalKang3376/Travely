@@ -119,7 +119,7 @@
                     <div class="col-12">
                         <label class="admin-form-label">Current Image</label>
                         <div>
-                            <img src="{{ asset('storage/' . $package->image) }}"
+                            <img src="{{ travely_image_url($package->image) }}"
                                  alt="{{ $package->name }}"
                                  style="width:180px;height:110px;object-fit:cover;border-radius:8px;">
                         </div>

@@ -116,7 +116,7 @@
                     @error('image') <small class="text-danger">{{ $message }}</small> @enderror
 
                     @if($car->image)
-                        <img src="{{ asset('storage/' . $car->image) }}"
+                        <img src="{{ travely_image_url($car->image) }}"
                              class="current-car-image" alt="{{ $car->name }}">
                     @endif
                 </div>
