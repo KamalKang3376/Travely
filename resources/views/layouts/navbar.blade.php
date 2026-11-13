@@ -86,7 +86,7 @@
 
                         <div class="dropdown">
                             <button class="btn btn-outline-primary dropdown-toggle
-                                {{ request()->routeIs('my-bookings', 'my-destination-bookings', 'my-flight-bookings', 'my-package-bookings.*') ? 'active' : '' }}"
+                                {{ request()->routeIs('my-bookings', 'my-destination-bookings', 'my-flight-bookings', 'my-package-bookings.*', 'my-car-bookings*') ? 'active' : '' }}
                                 type="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -127,6 +127,14 @@
                                         Package Bookings
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="dropdown-item py-2 {{ request()->routeIs('my-car-bookings*') ? 'active' : '' }}"
+                                    href="{{ route('my-car-bookings') }}">
+                                        <i class="fa-solid fa-car me-2 text-success"></i>
+                                        Car Rental Bookings
+                                    </a>
+                                </li>
+
 
                             </ul>
                         </div>
