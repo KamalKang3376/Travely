@@ -1,4 +1,5 @@
- @extends('layouts.app')
+
+@extends('layouts.app')
 
 @section('title', 'Car Booking Confirmation - Travely')
 
@@ -11,103 +12,123 @@
 <section class="car-confirmation-section">
     <div class="container">
 
-        <div class="confirmation-card">
+        <div class="confirmation-wrapper">
 
-            <div class="confirmation-icon">
-                <i class="fas fa-check"></i>
+            <div class="confirmation-success">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+
+                <span class="confirmation-label">BOOKING REQUEST SUBMITTED</span>
+
+                <h1>Your Car Booking is Received!</h1>
+
+                <p>
+                    Thank you for choosing Travely. Your rental booking request
+                    has been successfully submitted.
+                </p>
             </div>
-
-            <span class="confirmation-label">BOOKING REQUEST SUBMITTED</span>
-
-            <h1>Your Car Booking is Received!</h1>
-
-            <p class="confirmation-message">
-                Thank you for choosing Travely. Your rental booking request
-                has been successfully submitted.
-            </p>
 
             <div class="confirmation-reference">
-                <span>Booking Reference</span>
-                <strong>{{ $booking->booking_reference }}</strong>
-            </div>
+                <div>
+                    <span>Booking Reference</span>
+                    <strong>{{ $booking->booking_reference }}</strong>
+                </div>
 
-            <div class="confirmation-status">
-                <span>Booking Status</span>
-                <strong class="status-pending">
-                    {{ ucfirst($booking->status) }}
-                </strong>
+                <div class="confirmation-status">
+                    <span>Booking Status</span>
+                    <strong>
+                        <i class="fas fa-clock"></i>
+                        {{ ucfirst($booking->status) }}
+                    </strong>
+                </div>
             </div>
-
-            <hr>
 
             <div class="confirmation-car">
-                @if($booking->car->image)
-                    <img src="{{ travely_image_url($booking->car->image) }}"
-                         alt="{{ $booking->car->name }}">
-                @endif
+                <div class="confirmation-car-image">
+                    @if($booking->car->image)
+                        <img
+                            src="{{ travely_image_url($booking->car->image) }}"
+                            alt="{{ $booking->car->name }}">
+                    @else
+                        <i class="fas fa-car-side"></i>
+                    @endif
+                </div>
 
-                <div>
-                    <h4>{{ $booking->car->name }}</h4>
+                <div class="confirmation-car-info">
+                    <span class="car-info-label">YOUR RENTAL VEHICLE</span>
+                    <h3>{{ $booking->car->name }}</h3>
                     <p>{{ $booking->car->brand }} {{ $booking->car->model }}</p>
                 </div>
             </div>
 
+            <div class="confirmation-details-heading">
+                <h3>Booking Details</h3>
+                <p>Here is a summary of your rental information.</p>
+            </div>
+
             <div class="confirmation-details">
 
-                <div>
-                    <span>Customer</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-user"></i> Customer</span>
                     <strong>{{ $booking->customer_name }}</strong>
                 </div>
 
-                <div>
-                    <span>Pickup Date</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-calendar-check"></i> Pickup Date</span>
                     <strong>{{ $booking->pickup_datetime->format('d M Y, h:i A') }}</strong>
                 </div>
 
-                <div>
-                    <span>Return Date</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-calendar-alt"></i> Return Date</span>
                     <strong>{{ $booking->return_datetime->format('d M Y, h:i A') }}</strong>
                 </div>
 
-                <div>
-                    <span>Rental Duration</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-hourglass-half"></i> Rental Duration</span>
                     <strong>{{ $booking->rental_days }} Days</strong>
                 </div>
 
-                <div>
-                    <span>Pickup Location</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-map-marker-alt"></i> Pickup Location</span>
                     <strong>{{ $booking->pickup_location }}</strong>
                 </div>
 
-                <div>
-                    <span>Drop-off Location</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-location-arrow"></i> Drop-off Location</span>
                     <strong>{{ $booking->dropoff_location }}</strong>
                 </div>
 
-                <div>
-                    <span>Price Per Day</span>
+                <div class="detail-item">
+                    <span><i class="fas fa-tag"></i> Price Per Day</span>
                     <strong>₹{{ number_format($booking->price_per_day, 2) }}</strong>
                 </div>
 
-                <div class="confirmation-total">
+                <div class="detail-item detail-total">
                     <span>Total Amount</span>
                     <strong>₹{{ number_format($booking->total_price, 2) }}</strong>
                 </div>
 
             </div>
 
+            <div class="confirmation-note">
+                <i class="fas fa-info-circle"></i>
+                Your booking request is submitted. Please wait for booking confirmation.
+            </div>
+
             <div class="confirmation-actions">
                 <a href="{{ route('cars.index') }}" class="confirmation-primary-btn">
                     Explore More Cars
+                    <i class="fas fa-arrow-right"></i>
                 </a>
 
                 <a href="{{ route('my-car-bookings') }}" class="confirmation-secondary-btn">
+                    <i class="fas fa-calendar-alt"></i>
                     My Car Bookings
                 </a>
             </div>
 
         </div>
-
     </div>
 </section>
 
