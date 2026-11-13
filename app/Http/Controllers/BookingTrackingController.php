@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\PackageBooking;
+use App\Models\FlightBooking;
+use App\Models\HotelBooking;
+use App\Models\DestinationBooking;
+use App\Models\CarRentalBooking;
 use Illuminate\Http\Request;
 
 class BookingTrackingController extends Controller
@@ -19,13 +23,45 @@ class BookingTrackingController extends Controller
             'customer_email' => 'required|email',
         ]);
 
-        $booking = PackageBooking::where(
-            'booking_reference',
-            $validated['booking_reference']
+        $bookingTypes = [
+            'package' => PackageBooking::class,
+            'flight' => FlightBooking::class,
+            'hotel' => HotelBooking::class,
+            'destination' => DestinationBooking::class,
+            'car' => CarRentalBooking::class,
+        ];
+
+        $booking = null;
+        $bookingType = null;
+
+        foreach ($bookingTypes as $type => $model) {
+    $query = $model::query();
+
+    if ($type === 'flight') {
+        $query->with('flight');
+    } elseif ($type === 'hotel') {
+        $query->with('hotel');
+    } elseif ($type === 'destination') {
+        $query->with('destination');
+    } elseif ($type === 'car') {
+        $query->with('car');
+    } elseif ($type === 'package') {
+        $query->with('package');
+    }
+
+    $booking = $query
+        ->where('booking_reference', trim($validated['booking_reference']))
+        ->whereRaw(
+            'LOWER(customer_email) = ?',
+            [strtolower(trim($validated['customer_email']))]
         )
-        ->where('customer_email', $validated['customer_email'])
         ->first();
 
+    if ($booking) {
+        $bookingType = $type;
+        break;
+    }
+}
         if (!$booking) {
             return back()
                 ->withInput()
@@ -34,6 +70,9 @@ class BookingTrackingController extends Controller
                 ]);
         }
 
-        return view('packages.track-booking-result', compact('booking'));
+        return view(
+            'packages.track-booking-result',
+            compact('booking', 'bookingType')
+        );
     }
 }
