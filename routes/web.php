@@ -28,6 +28,7 @@ use App\Http\Controllers\PackageBookingController;
 use App\Http\Controllers\Admin\PackageBookingController as AdminPackageBookingController;
 use App\Http\Controllers\BookingTrackingController;
 use App\Http\Controllers\MyPackageBookingController;
+use App\Http\Controllers\MyAllBookingsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -150,6 +151,9 @@ Route::patch('/my-flight-bookings/{reference}/cancel', [FlightBookingController:
 
     Route::patch('/my-car-bookings/{reference}/cancel', [CarRentalBookingController::class, 'cancelMyBooking'])
     ->name('my-car-bookings.cancel');
+
+    Route::get('/my-all-bookings', [MyAllBookingsController::class, 'index'])
+    ->name('my-all-bookings');
 
 });
 

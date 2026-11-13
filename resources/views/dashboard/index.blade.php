@@ -31,7 +31,10 @@
                     <i class="fa-solid fa-suitcase text-success fs-2"></i>
                     <h5 class="mt-3">My Bookings</h5>
                     <p class="text-muted">View your travel bookings.</p>
-                    <a href="#" class="btn btn-outline-primary">View Bookings</a>
+                    <a href="{{ route('my-all-bookings') }}" class="btn btn-outline-primary">
+                        <i class="fa-solid fa-eye me-2"></i>
+                        View All Bookings
+                    </a>
                 </div>
             </div>
 
