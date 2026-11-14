@@ -10,11 +10,64 @@
 @section('content')
 
 <section class="destination-banner">
-    <div class="container text-center">
+    <div class="container text-center" data-reveal="up">
         <h1>Explore Beautiful Destinations</h1>
         <p>Discover amazing places and plan your next adventure.</p>
     </div>
 </section>
+
+<section class="destination-search-section">
+    <div class="container">
+        <form action="{{ route('destinations.index') }}" method="GET"
+              class="destination-search-form">
+
+            <div class="destination-search-field">
+                <label for="destination-search">Where do you want to go?</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </span>
+                    <input
+                        type="text"
+                        id="destination-search"
+                        name="search"
+                        class="form-control"
+                        placeholder="Search destination or city"
+                        value="">
+                </div>
+            </div>
+
+            <div class="destination-search-field">
+                <label for="destination-country">Choose Country</label>
+                <select id="destination-country" name="country"
+                        class="form-select">
+                    <option value="">All Countries</option>
+                    @foreach($countries as $country)
+                        <option value="{{ $country }}">
+                            {{ $country }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit" class="destination-search-btn">
+                <i class="fa-solid fa-magnifying-glass me-2"></i>
+                Search Destinations
+            </button>
+
+        </form>
+    </div>
+</section>
+
+@if($hasFilters)
+    <div class="container text-end mt-3" data-reveal="up">
+        <a href="{{ route('destinations.index') }}"
+           class="btn btn-outline-success">
+            <i class="fa-solid fa-list me-2"></i>
+            View All Destinations
+        </a>
+    </div>
+@endif
 
 <section class="py-5">
     <div class="container">
@@ -23,7 +76,7 @@
 
             @forelse($destinations as $destination)
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-reveal="up">
 
                     <div class="destination-list-card">
 
@@ -92,7 +145,7 @@
 
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5" data-reveal="up">
             {{ $destinations->links('pagination::bootstrap-5') }}
         </div>
 

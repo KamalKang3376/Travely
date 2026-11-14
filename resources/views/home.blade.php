@@ -174,7 +174,7 @@
 
     <div class="container position-relative">
 
-        <div class="why-travely-heading text-center">
+        <div class="why-travely-heading text-center" data-reveal="up">
             <span>WHY CHOOSE TRAVELY</span>
 
             <h2>Travel With Confidence</h2>
@@ -186,7 +186,7 @@
 
         <div class="row g-4 mt-4">
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" data-reveal="up">
                 <div class="why-travely-card">
                     <div class="why-travely-icon">
                         <i class="fa-solid fa-earth-americas"></i>
@@ -200,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" data-reveal="up">
                 <div class="why-travely-card">
                     <div class="why-travely-icon">
                         <i class="fa-solid fa-hotel"></i>
@@ -214,7 +214,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" data-reveal="up">
                 <div class="why-travely-card">
                     <div class="why-travely-icon">
                         <i class="fa-solid fa-shield-halved"></i>
@@ -228,7 +228,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" data-reveal="up">
                 <div class="why-travely-card">
                     <div class="why-travely-icon">
                         <i class="fa-solid fa-headset"></i>
@@ -248,47 +248,40 @@
 
 </section>
 
+
 <section class="search-section">
     <div class="container">
-
         <div class="search-box" data-reveal="up">
 
-            <form action="#" method="GET">
+            <form action="{{ route('destinations.index') }}" method="GET">
 
                 <div class="row align-items-end gy-3">
 
-                    <div class="col-lg-4 col-md-6">
-                        <label>Where to go?</label>
+                    <div class="col-lg-9 col-md-8">
+                        <label for="home-destination-search">
+                            Where do you want to go?
+                        </label>
+
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fa-solid fa-location-dot"></i>
                             </span>
-                            <input type="text" class="form-control"
-                                name="destination"
-                                placeholder="Search destinations">
+
+                            <input
+                                type="text"
+                                id="home-destination-search"
+                                class="form-control"
+                                name="search"
+                                placeholder="Search destination, city or country"
+                            >
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
-                        <label>Check In</label>
-                        <input type="date" name="check_in" class="form-control">
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <label>Guests</label>
-                        <select name="guests" class="form-select">
-                            <option value="1">1 Guest</option>
-                            <option value="2" selected>2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                            <option value="5">5+ Guests</option>
-                        </select>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6">
-                        <button type="submit" class="btn btn-primary w-100 search-button">
-                            <i class="fa-solid fa-magnifying-glass me-1"></i>
-                            Search
+                    <div class="col-lg-3 col-md-4">
+                        <button type="submit"
+                                class="btn btn-primary w-100 search-button">
+                            <i class="fa-solid fa-magnifying-glass me-2"></i>
+                            Search Destinations
                         </button>
                     </div>
 
@@ -297,9 +290,9 @@
             </form>
 
         </div>
-
     </div>
 </section>
+
 
 <section class="destination-section">
 

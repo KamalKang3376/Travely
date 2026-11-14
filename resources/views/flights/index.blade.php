@@ -10,7 +10,7 @@
 @section('content')
 
 <section class="flight-hero">
-    <div class="container">
+    <div class="container" data-reveal="up">>
         <div class="flight-hero-content">
             <span class="flight-tag">TRAVEL WITH COMFORT</span>
             <h1>Find Your Perfect Flight</h1>
@@ -57,7 +57,7 @@
 </section>
 
 <section class="flight-listing-section py-5">
-    <div class="container">
+    <div class="container"data-reveal="up">
 
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
             <div>
@@ -71,7 +71,7 @@
         <div class="row g-4">
 
             @forelse($flights as $flight)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-reveal="up">
                     <div class="flight-card">
 
                         @if($flight->image)
@@ -154,7 +154,7 @@
 
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4" data-reveal="up">
             {{ $flights->links() }}
         </div>
 

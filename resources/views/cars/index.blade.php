@@ -9,7 +9,7 @@
 @section('content')
 
 <section class="car-hero">
-    <div class="container">
+    <div class="container"data-reveal="up">
         <div class="car-hero-content">
             <span class="car-tag">EXPLORE WITH FREEDOM</span>
             <h1>Find Your Perfect<br>Rental Car</h1>
@@ -18,8 +18,62 @@
     </div>
 </section>
 
-<section class="car-listing-section">
+
+
+<section class="car-search-section">
     <div class="container">
+        <form action="{{ route('cars.index') }}" method="GET"
+              class="car-search-form">
+
+            <div class="car-search-field">
+                <label for="car-search">Car Name</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-car"></i>
+                    </span>
+                    <input
+                        type="text"
+                        id="car-search"
+                        name="search"
+                        class="form-control"
+                        placeholder="Search by car name">
+                </div>
+            </div>
+
+            <div class="car-search-field">
+                <label for="car-seats">Number of Seats</label>
+                <select id="car-seats" name="seats" class="form-select">
+                    <option value="">All Seats</option>
+                    @foreach($seatOptions as $seat)
+                        <option value="{{ $seat }}">
+                            {{ $seat }} Seats
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit" class="car-search-btn">
+                <i class="fa-solid fa-magnifying-glass me-2"></i>
+                Search Cars
+            </button>
+
+        </form>
+    </div>
+</section>
+
+@if($hasFilters)
+    <div class="car-view-all-wrapper">
+        <a href="{{ route('cars.index') }}"
+           class="btn btn-outline-success">
+            <i class="fa-solid fa-list me-2"></i>
+            View All Cars
+        </a>
+    </div>
+@endif
+
+
+<section class="car-listing-section">
+    <div class="container"data-reveal="up">
 
         <div class="car-section-heading">
             <span>OUR RENTAL FLEET</span>
@@ -87,7 +141,7 @@
 
         </div>
 
-        <div class="car-pagination">
+        <div class="car-pagination"data-reveal="up">
             {{ $cars->links() }}
         </div>
 

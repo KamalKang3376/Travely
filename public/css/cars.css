@@ -435,3 +435,125 @@
         font-size: 25px;
     }
 }
+
+.car-search-section {
+    position: relative;
+    z-index: 2;
+    margin-top: -40px;
+    margin-bottom: 25px;
+}
+
+.car-search-form {
+    display: flex;
+    align-items: end;
+    gap: 18px;
+    padding: 26px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+}
+
+.car-search-field {
+    flex: 1;
+    min-width: 0;
+}
+
+.car-search-field label {
+    display: block;
+    margin-bottom: 9px;
+    color: #12332e;
+    font-weight: 600;
+}
+
+.car-search-form .form-control,
+.car-search-form .form-select,
+.car-search-form .input-group-text {
+    min-height: 48px;
+    border-color: #dce2df;
+}
+
+.car-search-form .input-group-text {
+    background: #fff;
+    color: #c49a55;
+}
+
+.car-search-form .form-control:focus,
+.car-search-form .form-select:focus {
+    border-color: #c49a55;
+    box-shadow: 0 0 0 0.15rem rgba(196, 154, 85, 0.15);
+}
+
+.car-search-btn {
+    min-height: 48px;
+    padding: 0 23px;
+    border: none;
+    border-radius: 7px;
+    background: #12332e;
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.car-search-btn:hover {
+    background: #c49a55;
+}
+
+.car-reset-btn {
+    color: #12332e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+@media (max-width: 991px) {
+    .car-search-form {
+        flex-wrap: wrap;
+    }
+
+    .car-search-field {
+        flex: 1 1 40%;
+    }
+}
+
+@media (max-width: 576px) {
+    .car-search-section {
+        margin-top: -20px;
+    }
+
+    .car-search-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+    }
+
+    .car-search-field {
+        width: 100%;
+    }
+
+    .car-search-btn {
+        width: 100%;
+    }
+
+    .car-reset-btn {
+        text-align: center;
+    }
+}
+.car-search-form {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.car-search-field {
+    flex: 1;
+    min-width: 0;
+}
+.car-view-all-wrapper {
+    max-width: 1000px;
+    margin: 25px auto 0;
+    text-align: right;
+}
+
+@media (max-width: 767px) {
+    .car-view-all-wrapper {
+        margin: 20px 20px 0;
+    }
+}
